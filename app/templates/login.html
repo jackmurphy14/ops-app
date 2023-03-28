@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <!--displays in browser tab-->
+        <title>Login - Sensoteq Operations</title>
+
+        <!--link to css file-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+    </head>
+
+    <body>
+        <h1>SENSOTEQ OPERATIONS</h1>
+
+        <ul>
+            <li><a href="#">Create Profile</a></li>
+        </ul>
+
+    <!--add flash messages-->
+
+    <!--login form-->
+    <h1>Sign In</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+            <!--captures errors-->
+            {% for error in form.username.errors %}
+            [{{ error }}]
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+            {% for error in form.password.errors %}
+            [{{ error }}]
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.remember_me() }}
+            {{ form.remember_me.label }}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+    </body>
+</html>
