@@ -12,7 +12,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         #prevents logged in users navigating to login section
-        if current_user.is_authenticated():
+        if current_user.is_authenticated:
             return redirect(url_for('index'))
         
         #queries database with form submission to find the user
