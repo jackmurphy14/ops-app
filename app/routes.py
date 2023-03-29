@@ -1,9 +1,9 @@
 #routes file
-from flask import render_template, flash, redirect
+from flask import render_template
 from app import app
 from app.forms import LoginForm
 
-@app.route('/')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
