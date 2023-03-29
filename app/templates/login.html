@@ -18,7 +18,20 @@
             <li><a href="#">Create Profile</a></li>
         </ul>
 
-    <!--add flash messages-->
+
+        <!--display flashed messages-->
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+    
 
     <!--login form-->
     <h1>Sign In</h1>
