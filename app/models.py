@@ -8,6 +8,7 @@ class User(UserMixin, db.Model):
     last_name = db.Column(db.String(40))
     username = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    admin = db.Column(db.String(1), default="F")
 
     #for python interpreter
     def __repr__(self):
@@ -18,6 +19,15 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+    def is_admin(self):
+        return self.admin == "T"
+    
+    def make_admin(self):
+        self.admin = "T"
+
+    def remove_admin(self):
+        self.admin = "F"
 
 #this function loads a user when given the id
 @login.user_loader

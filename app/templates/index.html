@@ -3,6 +3,10 @@
 <ul>
     <li>
         <!--reminder to add in if current user is anonymous - 07-->
+        {% if current_user.is_admin() }
+        <a href = "#">Create User Profile</a>
+        {% endif %}
+        <a href ="#">Non-Conformance</a>
         <a href="#">Logout</a>
     </li>
 </ul>

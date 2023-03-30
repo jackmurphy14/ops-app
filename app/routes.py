@@ -2,7 +2,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app
-from app.forms import LoginForm
+from app.forms import LoginForm, RegistrationForm
 from app.models import User
 from werkzeug.urls import url_parse
 
@@ -31,6 +31,13 @@ def login():
         return redirect(next_page)
         
     return render_template('login.html', form=form)
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+
+    form=RegistrationForm()
+
+    return render_template('register.html', form=form)
 
 @app.route('/logout')
 def logout():
